@@ -14,4 +14,3 @@ jobs:
     CD:
         needs: [CI]
         uses: veronez-dev/pipe-reapro-01/.github/workflows/cd.yaml@main
-        
