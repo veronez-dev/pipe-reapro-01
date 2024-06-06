@@ -18,10 +18,6 @@ on:
         type: string
         required: true
         description: "Branch referencia utilizada para deploy"
-    secrets:
-      kubeconfig:
-        required: true
-        description: "Kubeconfig para configurar o contexto do Kubernetes"
 jobs:
   deploy:
     runs-on: ubuntu-latest
