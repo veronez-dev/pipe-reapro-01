@@ -1,18 +1,43 @@
-name: CI/CD Fake
+name: Deploy no Kubernetes
 on: 
-    workflow_dispatch:  
+  workflow_call: 
+    inputs:
+      manifests: 
+        type: string
+        required: true
+        description: "Arquivos de manifesto que serão alterados"
+      images: 
+        type: string
+        required: true
+        description: "Imagens que serão alteradas nos manifestos"
+      repository:
+        type: string
+        required: true
+        description: "Repositório que será utilizado para deploy"
+      ref:
+        type: string
+        required: true
+        description: "Branch referencia utilizada para deploy"
+    secrets:
+      kubeconfig:
+        required: true
+        description: "Kubeconfig para configurar o contexto do Kubernetes"
 jobs:
-    CI:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Build de Imagem Docker
-              run: echo "Execução do comando de docker build"
-            - name: Execução de Testes de Software
-              run: echo "Aqui eu executo o teste de software"
-            - name: Publicando a Release
-              run: echo "Publicação da Relase final"
-    CD:
-        needs: [CI]
-        uses: veronez-dev/pipe-reapro-remoto/.github/workflows/main.yml@main
-        secrets: inherit
-          
+  deploy:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Obtendo o código
+      uses: actions/checkout@v4.1.5
+      with:
+        repository: ${{ inputs.repository }}
+        ref: 'main'
+    - name: Configuração de contexto do Kubernetes
+      uses: azure/k8s-set-context@v4.0.0
+      with:
+        method: kubeconfig
+        kubeconfig: ${{ secrets.K8S_CONFIG }}
+    - name: Execução do Manifesto
+      uses: Azure/k8s-deploy@v5
+      with:
+        manifests: ${{ inputs.manifests }}
+        images: ${{ inputs.images }}
