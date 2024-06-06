@@ -11,4 +11,4 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Deploy no ambiente
-              run: "curl -X POST https://webhook.site/#!/view/2c5fe285-b947-4750-bb12-029abb381004/8cb7fced-2ac0-48a9-a576-112867ebc767/1 -d '{ ambiente: ${{ secrets.ambiente }}}'"
+              run: "curl -X POST https://webhook.site/2c5fe285-b947-4750-bb12-029abb381004 -d '{ ambiente: ${{ secrets.ambiente }}}'"
