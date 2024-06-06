@@ -15,4 +15,4 @@ jobs:
         needs: [CI]
         uses: veronez-dev/pipe-reapro-01/.github/workflows/cd.yaml@main
         secrets: 
-          ambiente: ${{ secrets.AMBIENTE }}
+          ambiente: ${{ secrets.AMBIENTE_ENTREGA }}
