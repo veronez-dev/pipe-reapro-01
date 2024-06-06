@@ -13,6 +13,6 @@ jobs:
               run: echo "Publicação da Relase final"
     CD:
         needs: [CI]
-        uses: veronez-dev/pipe-reapro-remoto/.github/workflows/main.yaml@main
+        uses: veronez-dev/pipe-reapro-remoto/.github/workflows/main.yml@main
         secrets: inherit
           
