@@ -1,1 +1,18 @@
-
+name: CI/CD Fake
+on: 
+    workflow_dispatch:  
+jobs:
+    CI:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build de Imagem Docker
+              run: echo "Execução do comando de docker build"
+            - name: Execução de Testes de Software
+              run: echo "Aqui eu executo o teste de software"
+            - name: Publicando a Release
+              run: echo "Publicação da Relase final"
+    CD:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy no ambiente
+              run: echo "Executando o deploy no ambiente de desenvolvimento"
