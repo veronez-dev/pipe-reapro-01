@@ -12,4 +12,4 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Deploy no ambiente
-              run: echo "Executando o deploy no ambiente de desenvolvimento"
+              run: echo "Executando o deploy no ambiente de ${{ inputs.ambiente }}"
