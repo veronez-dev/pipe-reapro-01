@@ -1,0 +1,9 @@
+name: Deploy Fake
+on: 
+    workflow_call:   
+jobs:
+    CD:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy no ambiente
+              run: echo "Executando o deploy no ambiente de desenvolvimento"

@@ -12,8 +12,6 @@ jobs:
             - name: Publicando a Release
               run: echo "Publicação da Relase final"
     CD:
-        runs-on: ubuntu-latest
         needs: [CI]
-        steps:
-            - name: Deploy no ambiente
-              run: echo "Executando o deploy no ambiente de desenvolvimento"
+        uses: veronez-dev/pipe-reapro-01/.github/workflows/cd.yaml@main
+        
